@@ -9,13 +9,12 @@ namespace Task2
     public class drums
     {
         //1 constructor
-        public drums (string newpart, string newmaterial, double newdiameter, string newunit)
-        {
-            //wann gebe ich die parameter von drums ein?
+        public drums (string newpart, string newmaterial, decimal newdiameter, string newunit)
+        { 
             if (string.IsNullOrWhiteSpace(newpart)) throw new ArgumentException("Part must not be empty.");
             if (string.IsNullOrWhiteSpace(newmaterial)) throw new ArgumentException("Material must not be empty.");
             if (newdiameter < 0) throw new ArgumentOutOfRangeException("Diameter must not be neagtive.");
-            //if (string.IsNullOrWhiteSpace(newunit) || newunit != "cm" || newunit != "inch") throw new ArgumentException("Unit must be cm or inch.");
+            if (string.IsNullOrWhiteSpace(newunit) || (newunit != "cm" && newunit != "inch")) throw new ArgumentException("Unit must be cm or inch.");
 
             part = newpart;
             material = newmaterial;
@@ -28,19 +27,19 @@ namespace Task2
         public string unit { get; private set; }
 
         //min 1 private field (like m_price)
-        private double diameter;
+        private decimal diameter;
 
         //1 public method
-        public double getdiameter(string Unit)
+        public decimal getdiameter(string Unit)
         {
             if (Unit == "inch") return diameter;
 
-            var rate = 2.54;
+            decimal rate = 2.54M;
             return diameter / rate;
         }
 
         //1 public method (like UpdatePrice)
-        public void UpdateDiameter(double newdiameter, string Unit)
+        public void UpdateDiameter(decimal newdiameter, string Unit)
         {
             if (newdiameter < 0) throw new ArgumentOutOfRangeException("Diameter must not be negative");
 
