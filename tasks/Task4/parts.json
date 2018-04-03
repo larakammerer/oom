@@ -1,0 +1,20 @@
+[
+  {
+    "Diameter": 18.0,
+    "Material": "Metal",
+    "Unit": "inch",
+    "Snares": "pinned"
+  },
+  {
+    "Diameter": 16.0,
+    "Material": "Wood",
+    "Unit": "inch",
+    "Snares": "loosened"
+  },
+  {
+    "Diameter": 56.0,
+    "Material": "Metal",
+    "Unit": "cm",
+    "Snares": "loosened"
+  }
+]
