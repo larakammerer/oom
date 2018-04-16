@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Task4
 {
-    public interface drumparts
+    public interface IDrumParts
     {
         string Material { get; }
         string Unit { get; }

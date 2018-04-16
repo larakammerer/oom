@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    public class Basedrum : drumparts
+    public class Basedrum : IDrumParts
     {
         //constructor
-        public Basedrum(string newmaterial, decimal newdiameter, string newunit, string newpedal)
+        public Basedrum(string material, decimal diameter, string unit, string pedal)
         {
-            if (string.IsNullOrWhiteSpace(newmaterial)) throw new ArgumentException("Material must not be empty.");
-            if (newdiameter < 0) throw new ArgumentOutOfRangeException("Diameter must not be neagtive.");
-            if (string.IsNullOrWhiteSpace(newunit) || (newunit != "cm" && newunit != "inch")) throw new ArgumentException("Unit must be cm or inch.");
-            if (string.IsNullOrWhiteSpace(newpedal)) throw new ArgumentException("Pedal must not be empty.");
-            if (newpedal != "single" && newpedal != "double") throw new ArgumentException("Pedal must be single or double.");
+            if (string.IsNullOrWhiteSpace(material)) throw new ArgumentException("Material must not be empty.");
+            if (diameter < 0) throw new ArgumentOutOfRangeException("Diameter must not be neagtive.");
+            if (string.IsNullOrWhiteSpace(unit) || (unit != "cm" && unit != "inch")) throw new ArgumentException("Unit must be cm or inch.");
+            if (string.IsNullOrWhiteSpace(pedal)) throw new ArgumentException("Pedal must not be empty.");
+            if (pedal != "single" && pedal != "double") throw new ArgumentException("Pedal must be single or double.");
 
-            Material = newmaterial;
-            UpdateDiameter(newdiameter, newunit);
-            Pedal = newpedal;
+            Material = material;
+            UpdateDiameter(diameter, unit);
+            Pedal = pedal;
         }
 
         //public properties
@@ -40,20 +40,20 @@ namespace Task4
         }
 
         //public method
-        public void UpdateDiameter(decimal newdiameter, string newunit)
+        public void UpdateDiameter(decimal diameter, string unit)
         {
-            if (newdiameter < 0) throw new ArgumentOutOfRangeException("Diameter must not be negative");
+            if (diameter < 0) throw new ArgumentOutOfRangeException("Diameter must not be negative");
 
-            Diameter = newdiameter;
-            Unit = newunit;
+            Diameter = diameter;
+            Unit = unit;
         }
 
-        public void UpdatePedal(string newpedal)
+        public void UpdatePedal(string pedal)
         {
-            if (string.IsNullOrWhiteSpace(newpedal)) throw new ArgumentException("Pedal must not be empty.");
-            if (newpedal != "pinned" && newpedal != "loosened") throw new ArgumentException("Pedal must be single or double.");
+            if (string.IsNullOrWhiteSpace(pedal)) throw new ArgumentException("Pedal must not be empty.");
+            if (pedal != "pinned" && pedal != "loosened") throw new ArgumentException("Pedal must be single or double.");
 
-            Pedal = newpedal;
+            Pedal = pedal;
         }
 
         override public string ToString()

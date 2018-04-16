@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    public class Snaredrum : drumparts
+    public class Snaredrum : IDrumParts
     {
         //constructor
-        public Snaredrum(string newmaterial, decimal newdiameter, string newunit, string newsnares)
+        public Snaredrum(string material, decimal diameter, string unit, string snares)
         {
-            if (string.IsNullOrWhiteSpace(newmaterial)) throw new ArgumentException("Material must not be empty.");
-            if (newdiameter < 0) throw new ArgumentOutOfRangeException("Diameter must not be neagtive.");
-            if (string.IsNullOrWhiteSpace(newunit) || (newunit != "cm" && newunit != "inch")) throw new ArgumentException("Unit must be cm or inch.");
-            if (string.IsNullOrWhiteSpace(newsnares)) throw new ArgumentException("Snares must not be empty.");
-            if (newsnares != "pinned" && newsnares != "loosened") throw new ArgumentException("Snares must be pinned or loosened.");
+            if (string.IsNullOrWhiteSpace(material)) throw new ArgumentException("Material must not be empty.");
+            if (diameter < 0) throw new ArgumentOutOfRangeException("Diameter must not be neagtive.");
+            if (string.IsNullOrWhiteSpace(unit) || (unit != "cm" && unit != "inch")) throw new ArgumentException("Unit must be cm or inch.");
+            if (string.IsNullOrWhiteSpace(snares)) throw new ArgumentException("Snares must not be empty.");
+            if (snares != "pinned" && snares != "loosened") throw new ArgumentException("Snares must be pinned or loosened.");
 
-            Material = newmaterial;
-            UpdateDiameter(newdiameter, newunit);
-            Snares = newsnares;
+            Material = material;
+            UpdateDiameter(diameter, unit);
+            Snares = snares;
         }
 
         //public properties
@@ -40,20 +40,20 @@ namespace Task4
         }
 
         //public method
-        public void UpdateDiameter(decimal newdiameter, string newunit)
+        public void UpdateDiameter(decimal diameter, string unit)
         {
-            if (newdiameter < 0) throw new ArgumentOutOfRangeException("Diameter must not be negative");
+            if (diameter < 0) throw new ArgumentOutOfRangeException("Diameter must not be negative");
 
-            Diameter = newdiameter;
-            Unit = newunit;
+            Diameter = diameter;
+            Unit = unit;
         }
 
-        public void UpdateSnares(string newsnares)
+        public void UpdateSnares(string snares)
         {
-            if (string.IsNullOrWhiteSpace(newsnares)) throw new ArgumentException("Snares must not be empty.");
-            if (newsnares != "pinned" && newsnares != "loosened") throw new ArgumentException("Snares must be pinned or loosened.");
+            if (string.IsNullOrWhiteSpace(snares)) throw new ArgumentException("Snares must not be empty.");
+            if (snares != "pinned" && snares != "loosened") throw new ArgumentException("Snares must be pinned or loosened.");
 
-            Snares = newsnares;
+            Snares = snares;
         }
 
         override public string ToString()
